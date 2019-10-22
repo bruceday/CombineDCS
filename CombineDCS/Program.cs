@@ -43,11 +43,18 @@ namespace CombineDCS
             var listResult = DataCombine(listH, listI);
             using (var sw = new StreamWriter(outPath))
             {
-                foreach (var p in listResult)
+                for (int i = 0; i < listResult.Count; i++)
                 {
-                    foreach (var t in p)
+                    for (int j = 0; j < listResult[i].Count; j++)
                     {
-                        sw.Write(t + ",");
+                        if (j == listResult[i].Count - 1)
+                        {
+                            sw.Write(listResult[i][j]);
+                        }
+                        else
+                        {
+                            sw.Write(listResult[i][j] + ",");
+                        }
                     }
                     sw.WriteLine();
                 }
